@@ -51,7 +51,7 @@ while capture.isOpened():
     # cv2.imshow("Thresholded", thresh)
 
     # Find contours
-    image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE )
+    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE )
     
     try:
         # Find contour with maximum area
