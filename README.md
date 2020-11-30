@@ -9,7 +9,14 @@ pip install opencv-python
 ```
 
 And run the script with
+for windows :
 
 ```bash
 python .\Python\Recognition.py
+```
+
+for linux :
+
+```bash
+python ./Python/Recognition.py
 ```
