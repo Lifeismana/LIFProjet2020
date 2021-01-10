@@ -33,7 +33,7 @@ namespace OpenPose.Example {
             handEnabled = false,
             faceEnabled = false;
         public Vector2Int
-            netResolution = new Vector2Int(-1, 368),
+            netResolution = new Vector2Int(-1, 80),
             handResolution = new Vector2Int(368, 368),
             faceResolution = new Vector2Int(368, 368);
         public void SetHandEnabled(bool enabled) { handEnabled = enabled; }
@@ -92,7 +92,7 @@ namespace OpenPose.Example {
                 /* poseMode */ PoseMode.Enabled, /* netInputSize */ netResolution, /* outputSize */ null,
                 /* keypointScaleMode */ ScaleMode.InputResolution,
                 /* gpuNumber */ -1, /* gpuNumberStart */ 0, /* scalesNumber */ 1, /* scaleGap */ 0.25f,
-                /* renderMode */ RenderMode.Auto, /* poseModel */ PoseModel.BODY_25,
+                /* renderMode */ RenderMode.Cpu, /* poseModel */ PoseModel.BODY_25,
                 /* blendOriginalFrame */ true, /* alphaKeypoint */ 0.6f, /* alphaHeatMap */ 0.7f,
                 /* defaultPartToRender */ 0, /* modelFolder */ null,
                 /* heatMapTypes */ HeatMapType.None, /* heatMapScaleMode */ ScaleMode.ZeroToOne,
@@ -102,12 +102,12 @@ namespace OpenPose.Example {
 
             OPWrapper.OPConfigureHand(
                 /* enable */ handEnabled, /* detector */ Detector.Body, /* netInputSize */ handResolution,
-                /* scalesNumber */ 1, /* scaleRange */ 0.4f, /* renderMode */ RenderMode.Auto,
+                /* scalesNumber */ 1, /* scaleRange */ 0.4f, /* renderMode */ RenderMode.None,
                 /* alphaKeypoint */ 0.6f, /* alphaHeatMap */ 0.7f, /* renderThreshold */ 0.2f);
 
             OPWrapper.OPConfigureFace(
                 /* enable */ faceEnabled, /* detector */ Detector.Body, 
-                /* netInputSize */ faceResolution, /* renderMode */ RenderMode.Auto,
+                /* netInputSize */ faceResolution, /* renderMode */ RenderMode.None,
                 /* alphaKeypoint */ 0.6f, /* alphaHeatMap */ 0.7f, /* renderThreshold */ 0.4f);
 
             OPWrapper.OPConfigureExtra(
