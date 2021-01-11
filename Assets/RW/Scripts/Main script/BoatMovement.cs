@@ -10,6 +10,7 @@ public class BoatMovement : MonoBehaviour
 	public float rotateAngle = 20.0f;
 	public float actionTime = 1.0f;
     public float checkpointARamasser = 0;
+    public GUI gui;
 
 	private float currentLeftActionTime=-3f;
 	private float currentRightActionTime=-3f;
@@ -35,6 +36,7 @@ public class BoatMovement : MonoBehaviour
         if(checkpointARamasser<=0){
             pause = true;
             Debug.Log("Vous passez la ligne d'arrivée");
+            gui.EcranDeFin();
         }
         else{
             Debug.Log("il vous manque des checkpoint pour finir la course");

@@ -8,10 +8,11 @@ public class GUI : MonoBehaviour
 	public TextMesh loading;
 	public TextMesh countdown;
 	public TextMesh chrono;
+	public BoatMovement bm;
 
 	public Text FPS;
 
-	private bool pres,feu;
+	private bool pres,feu,fin;
 	public float compteur = 3;
 	private float chronometre = 0.0f;
 
@@ -24,6 +25,7 @@ public class GUI : MonoBehaviour
 
 		pres = false;
 		feu = false;
+		fin = false;
 	}
 
 	void updateLoading(){
@@ -59,13 +61,15 @@ public class GUI : MonoBehaviour
 	void updateCountdown(){
 		if(pres){
 	    	compteur-=Time.deltaTime;
-	    	countdown.text = ((int)compteur+1).ToString();
+	    	if(compteur>0)
+	    		countdown.text = ((int)compteur+1).ToString();
 
-	    	if(compteur <= 0){
+	    	if(!feu&&compteur <= 0){
 	    		feu = true;
 	    		countdown.text = "ramez !";
+	    		bm.Commencer();
 	    	}
-	    	if(compteur <= -0.5){
+	    	if(compteur <= -1){
 	    		countdown.text = "";
 	    	}
 		}
@@ -99,11 +103,21 @@ public class GUI : MonoBehaviour
 		}
 	}
 
+	public void EcranDeFin(){
+		fin = true;
+		chrono.text = "";
+		loading.text = "";
+		countdown.text = "Félicitation !\nvous avez terminé la course en :\n"+Temps(chronometre,":");
+		countdown.fontSize = 150;
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
-		updateCountdown();
-		updateChrono();
-		updateLoading();
+		if(!fin){
+			updateCountdown();
+			updateChrono();
+			updateLoading();
+		}
 	}
 }

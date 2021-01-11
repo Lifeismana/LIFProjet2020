@@ -1954,8 +1954,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
+      propertyPath: gui
+      value: 
+      objectReference: {fileID: 2060723610}
+    - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
       propertyPath: pause
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
       propertyPath: finish
@@ -1968,6 +1972,10 @@ PrefabInstance:
     - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
       propertyPath: actionTime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
+      propertyPath: checkpointARamasser
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359358326623928025, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
       propertyPath: m_Name
@@ -4445,6 +4453,17 @@ CharacterController:
   m_CorrespondingSourceObject: {fileID: 2169610097777172520, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
   m_PrefabInstance: {fileID: 678189750}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1387710450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
+  m_PrefabInstance: {fileID: 678189750}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387710448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123ec0730324bbd479f1967e2ba096f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1387710451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6996,6 +7015,7 @@ MonoBehaviour:
   loading: {fileID: 1030832306}
   countdown: {fileID: 149840559}
   chrono: {fileID: 1670375071}
+  bm: {fileID: 1387710450}
   FPS: {fileID: 360185006}
   compteur: 3
 --- !u!1 &2102530490
