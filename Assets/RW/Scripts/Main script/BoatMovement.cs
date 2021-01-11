@@ -11,8 +11,6 @@ public class BoatMovement : MonoBehaviour
 	public float actionTime = 1.0f;
     public float checkpointARamasser = 0;
 
-    public Collider finish;
-
 	private float currentLeftActionTime=-3f;
 	private float currentRightActionTime=-3f;
 	private CharacterController controller;
@@ -24,7 +22,6 @@ public class BoatMovement : MonoBehaviour
     void Start()
     {
       controller = GetComponent<CharacterController>();
-      Physics.IgnoreCollision(controller,finish);
     }
 
 

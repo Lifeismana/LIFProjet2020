@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLine : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
 	public CharacterController player;
 
@@ -15,8 +15,8 @@ public class FinishLine : MonoBehaviour
     void OnTriggerEnter(Collider col){
     	BoatMovement boat = col.gameObject.GetComponent<BoatMovement>();
     	if (boat != null){
-    		boat.Terminer();
-    		Debug.Log("Vous passez la ligne d'arrivée");
+    		boat.RamasserCheckpoint();
+    		Debug.Log("vous ramasser un checkpoint");
     	}
     }
 
@@ -26,3 +26,4 @@ public class FinishLine : MonoBehaviour
         
     }
 }
+
