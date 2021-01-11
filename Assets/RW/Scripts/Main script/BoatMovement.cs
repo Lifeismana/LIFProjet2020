@@ -11,13 +11,19 @@ public class BoatMovement : MonoBehaviour
 	public float actionTime = 1.0f;
     public float checkpointARamasser = 0;
     public GUI gui;
+	public float friction = 0.99f;
 
+	private bool rameDroiteLever = false;
+	private bool rameGaucheLever = false;
 	private float currentLeftActionTime=-3f;
 	private float currentRightActionTime=-3f;
+	
 	private CharacterController controller;
+	private Vector3 moveVelocity = Vector3.zero;
 	private bool rameDroiteLever = false;
 	private bool rameGaucheLever = false;
     public bool pause = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +57,8 @@ public class BoatMovement : MonoBehaviour
     void Update()
     {
     	if(!pause){
+	    //moveVelocity.x *= friction;
+	    //moveVelocity.z *= friction;
             //rame de droite avec openPose
         	if(GameObject.Find("4_RWrist")){
         		float Rhigh = GameObject.Find("4_RWrist").transform.position.y;
