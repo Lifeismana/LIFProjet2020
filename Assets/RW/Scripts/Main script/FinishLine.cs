@@ -16,7 +16,6 @@ public class FinishLine : MonoBehaviour
     	BoatMovement boat = col.gameObject.GetComponent<BoatMovement>();
     	if (boat != null){
     		boat.Terminer();
-    		Debug.Log("Vous passez la ligne d'arrivée");
     	}
     }
 

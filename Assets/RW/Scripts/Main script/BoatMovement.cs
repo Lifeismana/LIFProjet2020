@@ -32,7 +32,13 @@ public class BoatMovement : MonoBehaviour
 
     public void Terminer()
     {
-        pause = true;
+        if(checkpointARamasser<=0){
+            pause = true;
+            Debug.Log("Vous passez la ligne d'arrivée");
+        }
+        else{
+            Debug.Log("il vous manque des checkpoint pour finir la course");
+        }
     }
 
     public void RamasserCheckpoint()

@@ -6,6 +6,8 @@ public class Checkpoint : MonoBehaviour
 {
 	public CharacterController player;
 
+
+	private bool ramasser = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +17,13 @@ public class Checkpoint : MonoBehaviour
     void OnTriggerEnter(Collider col){
     	BoatMovement boat = col.gameObject.GetComponent<BoatMovement>();
     	if (boat != null){
-    		boat.RamasserCheckpoint();
-    		Debug.Log("vous ramasser un checkpoint");
+    		if(!ramasser){
+    			boat.RamasserCheckpoint();
+    			Debug.Log("vous ramasser un checkpoint");
+    			ramasser = true;
+    		}
+    		else
+    			Debug.Log("vous avez déjà ramasser ce checkpoint");
     	}
     }
 
