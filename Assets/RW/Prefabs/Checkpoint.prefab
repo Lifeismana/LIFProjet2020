@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  used: {fileID: 239378781582670930, guid: cd2f53bdd0a098c4bb9cc64ebc02ac3d, type: 3}
 --- !u!1 &6136405839258590401
 GameObject:
   m_ObjectHideFlags: 0
