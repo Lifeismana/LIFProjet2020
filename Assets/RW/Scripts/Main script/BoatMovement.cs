@@ -6,23 +6,23 @@ public class BoatMovement : MonoBehaviour
 {
 	public Transform rameDroite;
 	public Transform rameGauche;
-	public float forward = 10.0f;
+	public float forward = 20.0f;
+	public float friction = 0.99f;
 	public float rotateAngle = 20.0f;
 	public float actionTime = 1.0f;
     public float checkpointARamasser = 0;
-    public GUI gui;
-	public float friction = 0.99f;
 
+
+	public bool pause = true;
 	private bool rameDroiteLever = false;
 	private bool rameGaucheLever = false;
 	private float currentLeftActionTime=-3f;
 	private float currentRightActionTime=-3f;
+	private float lastFrictionTime = 0f;
 	
 	private CharacterController controller;
 	private Vector3 moveVelocity = Vector3.zero;
-	private bool rameDroiteLever = false;
-	private bool rameGaucheLever = false;
-    public bool pause = true;
+	public GUI gui;
 
 
     // Start is called before the first frame update
@@ -56,9 +56,14 @@ public class BoatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    	if(!pause){
-	    //moveVelocity.x *= friction;
-	    //moveVelocity.z *= friction;
+	    moveVelocity.x *= friction;
+	    moveVelocity.z *= friction;
+	    lastFrictionTime = Time.time;
+
+	    if(!pause){
+
+
+			
             //rame de droite avec openPose
         	if(GameObject.Find("4_RWrist")){
         		float Rhigh = GameObject.Find("4_RWrist").transform.position.y;
@@ -86,11 +91,13 @@ public class BoatMovement : MonoBehaviour
      					if(Lhigh<Lelbow){
      						currentLeftActionTime = Time.time;
         					rameGaucheLever = false;
+                            moveVelocity += transform.TransformDirection(forward*Vector3.forward);
      					}
         			}
         			else{
         				if(Lhigh>Lelbow){
         					rameGaucheLever = true;
+                            moveVelocity += transform.TransformDirection(forward*Vector3.forward);
         				}
         			}
         		}
@@ -99,23 +106,28 @@ public class BoatMovement : MonoBehaviour
             //input de la souris pour les personnes ne possedant pas de caméra 
             if(Input.GetButton("Fire1") && Time.time - currentLeftActionTime>actionTime){
             	currentLeftActionTime = Time.time;
+                moveVelocity += transform.TransformDirection(forward*Vector3.forward);
             }
             if(Input.GetButton("Fire2") && Time.time - currentRightActionTime>actionTime){
             	currentRightActionTime = Time.time;
+                moveVelocity += transform.TransformDirection(forward*Vector3.forward);
             }
-        }
+            
+            if(Time.time - currentLeftActionTime < actionTime){
+	            // mettre (Time.time - currentLeftActionTime) dedans pour avoir un boost de vitesse qui réduit
+	            moveVelocity += transform.TransformDirection(forward*0.1f*Vector3.forward);
+	            transform.Rotate(Vector3.up, -rotateAngle*(Time.deltaTime/actionTime));
+	            rameGauche.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
+            }
 
-       
-        Vector3 MoveVelocity = transform.TransformDirection(Vector3.forward*forward*Time.deltaTime);
-        if(Time.time - currentLeftActionTime < actionTime){
-        	controller.Move(MoveVelocity);
-        	transform.Rotate(Vector3.up, -rotateAngle*(Time.deltaTime/actionTime));
-            rameGauche.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
-        }
-        if(Time.time - currentRightActionTime < actionTime){
-        	controller.Move(MoveVelocity);
-        	transform.Rotate(Vector3.up, rotateAngle*(Time.deltaTime/actionTime));
-            rameDroite.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
+            if(Time.time - currentRightActionTime < actionTime){
+	            // mettre (Time.time - currentLeftActionTime) dedans pour avoir un boost de vitesse qui réduit
+	            moveVelocity += transform.TransformDirection(forward*0.1f*Vector3.forward);
+	            transform.Rotate(Vector3.up, rotateAngle*(Time.deltaTime/actionTime));
+	            rameDroite.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
+            }
+
+            controller.Move(moveVelocity * Time.deltaTime);
         }
     }
 }
