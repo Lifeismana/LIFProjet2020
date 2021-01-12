@@ -49,7 +49,7 @@ public class GUI : MonoBehaviour
 		}
 		else{
 			if(!GameObject.Find("4_RWrist")){
-				loading.text="placer vous bien en face de votre caméra";
+				loading.text="Placez vous bien en face de votre caméra";
 				loading.fontSize = 100;
 			}
 			else
@@ -66,7 +66,7 @@ public class GUI : MonoBehaviour
 
 	    	if(!feu&&compteur <= 0){
 	    		feu = true;
-	    		countdown.text = "ramez !";
+	    		countdown.text = "Ramez !";
 	    		bm.Commencer();
 	    	}
 	    	if(compteur <= -1){
@@ -107,7 +107,7 @@ public class GUI : MonoBehaviour
 		fin = true;
 		chrono.text = "";
 		loading.text = "";
-		countdown.text = "Félicitation !\nvous avez terminé la course en :\n"+Temps(chronometre,":");
+		countdown.text = "Félicitations !\nVous avez terminé la course en :\n"+Temps(chronometre,":");
 		countdown.fontSize = 150;
 	}
 

@@ -128,6 +128,9 @@ public class BoatMovement : MonoBehaviour
             }
 
             controller.Move(moveVelocity * Time.deltaTime);
+        if(!controller.isGrounded){
+            controller.Move(-9*Vector3.up*Time.deltaTime);
+        }
         }
     }
 }
