@@ -8,9 +8,10 @@ public class BoatMovement : MonoBehaviour
 	public Transform rameGauche;
 	public float forward = 20.0f;
 	public float friction = 0.99f;
+    public float frictionTerrain = 0.2f;
 	public float rotateAngle = 20.0f;
 	public float actionTime = 1.0f;
-    public float checkpointARamasser = 0;
+    public float checkpointARamasser = 0f;
 
 
 	public bool pause = true;
@@ -43,6 +44,7 @@ public class BoatMovement : MonoBehaviour
             pause = true;
             Debug.Log("Vous passez la ligne d'arrivée");
             gui.EcranDeFin();
+            friction = 0.99f;
         }
         else{
             Debug.Log("il vous manque des checkpoint pour finir la course");
@@ -52,6 +54,15 @@ public class BoatMovement : MonoBehaviour
     public void RamasserCheckpoint()
     {
         checkpointARamasser--;
+    }
+
+    void OnTriggerStay(Collider col){
+        //quand on touche le terrain on est ralenti 
+        if(col.gameObject.name == "Terrain"){
+            moveVelocity.x *= frictionTerrain;
+            moveVelocity.z *= frictionTerrain;
+
+        }
     }
     // Update is called once per frame
     void Update()
@@ -127,10 +138,11 @@ public class BoatMovement : MonoBehaviour
 	            rameDroite.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
             }
 
-            controller.Move(moveVelocity * Time.deltaTime);
+            
+        }
+        controller.Move(moveVelocity * Time.deltaTime);
         if(!controller.isGrounded){
             controller.Move(-9*Vector3.up*Time.deltaTime);
-        }
         }
     }
 }
