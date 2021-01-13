@@ -44,7 +44,7 @@ public class BoatMovement : MonoBehaviour
             pause = true;
             Debug.Log("Vous passez la ligne d'arrivée");
             gui.EcranDeFin();
-            friction = 0.99f;
+            friction = 0.991f;
         }
         else{
             Debug.Log("il vous manque des checkpoint pour finir la course");
@@ -59,6 +59,7 @@ public class BoatMovement : MonoBehaviour
     void OnTriggerStay(Collider col){
         //quand on touche le terrain on est ralenti 
         if(col.gameObject.name == "Terrain"){
+        		Debug.Log("collision");
             moveVelocity.x *= frictionTerrain;
             moveVelocity.z *= frictionTerrain;
 
