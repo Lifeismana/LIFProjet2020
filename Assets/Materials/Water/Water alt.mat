@@ -29,11 +29,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Displacement: 0.89
-    - _NormalStrength: 0.214
-    - _Smoothness: 0.827
-    - _Strength: 0.58
+    - _NormalStrength: 0.8
+    - _Smoothness: 0.6
+    - _Strength: 0.4
     - _depth: 0.5
     m_Colors:
-    - _DeepColor: {r: 0.06007476, g: 0.3540921, b: 0.4716981, a: 0.8235294}
-    - _ShallowColor: {r: 0.1273585, g: 0.509434, b: 0.495283, a: 0.52156866}
+    - _DeepColor: {r: 0.056194365, g: 0.29233593, b: 0.38679248, a: 0.8235294}
+    - _ShallowColor: {r: 0.047058824, g: 0.43529412, b: 0.4627451, a: 0.45882353}
   m_BuildTextureStacks: []
