@@ -59,7 +59,7 @@ public class BoatMovement : MonoBehaviour
     void OnTriggerStay(Collider col){
         //quand on touche le terrain on est ralenti 
         if(col.gameObject.name == "Terrain"){
-        		Debug.Log("collision");
+        		//Debug.Log("collision");
             moveVelocity.x *= frictionTerrain;
             moveVelocity.z *= frictionTerrain;
 
