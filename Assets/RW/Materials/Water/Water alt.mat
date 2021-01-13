@@ -20,20 +20,20 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainNormal:
-        m_Texture: {fileID: 2800000, guid: 1f5025621288d204983bbb36255003e3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SEcondNormal:
         m_Texture: {fileID: 2800000, guid: af6e9b8afc7c84345a70fb20e0bbc068, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SEcondNormal:
+        m_Texture: {fileID: 2800000, guid: 1f5025621288d204983bbb36255003e3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Displacement: 0.5
-    - _NormalStrength: 0.656
-    - _Smoothness: 0.5
-    - _Strength: 0.46
-    - _depth: 0
+    - _Displacement: 0.89
+    - _NormalStrength: 0.214
+    - _Smoothness: 0.827
+    - _Strength: 0.58
+    - _depth: 0.5
     m_Colors:
-    - _DeepColor: {r: 0, g: 0.15980905, b: 0.3584906, a: 0.627451}
-    - _ShallowColor: {r: 0, g: 0.3773585, b: 0.36348507, a: 0.50980395}
+    - _DeepColor: {r: 0.06007476, g: 0.3540921, b: 0.4716981, a: 0.8235294}
+    - _ShallowColor: {r: 0.1273585, g: 0.509434, b: 0.495283, a: 0.52156866}
   m_BuildTextureStacks: []
