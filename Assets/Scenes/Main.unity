@@ -2073,7 +2073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
       propertyPath: frictionTerrain
-      value: 0.7
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1359358326623928024, guid: 0cb72a134b930344da0252b60e0fe1d3, type: 3}
       propertyPath: checkpointARamasser
