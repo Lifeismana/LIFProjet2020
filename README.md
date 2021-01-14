@@ -28,7 +28,7 @@ Une fois l'éditeur ouvert vous pouvez ouvrir la scène principale `Scenes/Main.
 
 **_Note: Les commits antérieurs au commit 139144c526b8a7a02d623c6b44c56eebc235c98d ont été fait sur Unity `2020.1.*`_**
 
-**_Note: Charger le projet avec Unity `2020.1.*` en ayant le commit 139144c526b8a7a02d623c6b44c56eebc235c98d provoquera des erreurs de compilations_**
+**_Note: Charger le projet avec une version de Unity antérieur à `2020.2.*` (ex: `2020.1.*` ) en ayant le commit 139144c526b8a7a02d623c6b44c56eebc235c98d provoquera des erreurs de compilations_**
 
 #### Build le projet:
 Il est conseillé d'utiliser un dossier nommé `Build` pour stocker le build car celui-ci est déjà ignoré dans le .gitignore
