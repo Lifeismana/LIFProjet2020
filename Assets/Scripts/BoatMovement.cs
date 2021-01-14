@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BoatMovement : MonoBehaviour
@@ -19,13 +20,13 @@ public class BoatMovement : MonoBehaviour
 	private bool rameGaucheLever = false;
 	private float currentLeftActionTime=-3f;
 	private float currentRightActionTime=-3f;
-	private float lastFrictionTime = 0f;
-	
+
 	private CharacterController controller;
 	private Vector3 moveVelocity = Vector3.zero;
 	public GUI gui;
 
-
+	private readonly quaternion defaultRotationValue = new quaternion(0f, 0f, 0f, 1f);
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -68,9 +69,9 @@ public class BoatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // apllique la friction
 	    moveVelocity.x *= friction;
 	    moveVelocity.z *= friction;
-	    lastFrictionTime = Time.time;
 
 	    if(!pause){
 
@@ -126,19 +127,36 @@ public class BoatMovement : MonoBehaviour
             }
             
             if(Time.time - currentLeftActionTime < actionTime){
-	            // mettre (Time.time - currentLeftActionTime) dedans pour avoir un boost de vitesse qui réduit
+	            // on continue à donner de la vitesse pendant l'animation
 	            moveVelocity += transform.TransformDirection(forward*0.1f*Vector3.forward);
 	            transform.Rotate(Vector3.up, -rotateAngle*(Time.deltaTime/actionTime));
 	            rameGauche.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
             }
+            // On réinitialise la position de notre rame pcq on finit pas forcément notre rotation après 360°
+            // TODO: C'est ptet mieux de fix le rotate plutôt que de faire ça  
+            else
+            {
+	            // C'est ptet une mauvaise idée de faire ça à chaque update, j'ai pas test les conséquance sur les perfs 
+	            // mais bon on est sur un ptit jeu ça doit pas avoir de conséquence et puis la seule idée que j'ai doit 
+	            // clairement être plus gourmande que ça et pis si le compilo optimise pas ça, c'est qu'il est nul, nah!
+	            // un peu un shitty fix pcq j'ai trouvé les valeurs en faisant un Debug.log()
+	           rameGauche.localRotation = defaultRotationValue;
+            }
 
             if(Time.time - currentRightActionTime < actionTime){
-	            // mettre (Time.time - currentLeftActionTime) dedans pour avoir un boost de vitesse qui réduit
+	            // on continue à donner de la vitesse pendant l'animation
 	            moveVelocity += transform.TransformDirection(forward*0.1f*Vector3.forward);
 	            transform.Rotate(Vector3.up, rotateAngle*(Time.deltaTime/actionTime));
 	            rameDroite.Rotate(Vector3.left, -360*(Time.deltaTime/actionTime));
             }
-
+            // On réinitialise la position de notre rame pcq on finit pas forcément notre rotation après 360°
+            // TODO: C'est ptet mieux de fix le rotate plutôt que de faire ça  
+            else
+            {
+	            // bis repetita d'au-dessus donc voir mon pavé cesar d'en-haut
+	            // un peu un shitty fix pcq j'ai trouvé les valeurs en faisant un Debug.log()
+	            rameDroite.localRotation = defaultRotationValue;
+            }
             
         }
         controller.Move(moveVelocity * Time.deltaTime);
