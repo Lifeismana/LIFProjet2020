@@ -1,0 +1,7 @@
+.exe
+SpinnakerNET_v140.dll
+SpinnakerNETd_v140.dll
+SpinnakerNETGUI_v140.dll
+SpinnakerNETGUId_v140.dll
+ActiproSoftware.Docking.Wpf.dll
+ActiproSoftware.Shared.Wpf.dll
